@@ -1,0 +1,38 @@
+.div1{
+    position:absolute;
+    left: 350px;
+    top:40px;
+    width: 100px;
+    height: 650px;
+    background: radial-gradient(rgba(1,1,1,0) 5%, rgba(1,1,1,0.7) 20%, rgba(1,1,1,1) 45%);
+}
+
+.div2{
+    position:absolute;
+    left: 450px;
+    top:40px;
+    width: 450px;
+    height: 100px;
+    background-color: black;
+    background: radial-gradient(rgba(1,1,1,0) 5%, rgba(1,1,1,0.7) 20%, rgba(1,1,1,1) 45%);
+}
+
+.div3{
+    position:absolute;
+    left: 900px;
+    top:40px;
+    width: 100px;
+    height: 650px;
+    background-color: black;
+    background: radial-gradient(rgba(1,1,1,0) 5%, rgba(1,1,1,0.7) 20%, rgba(1,1,1,1) 45%);
+}
+
+.div4{
+    position:absolute;
+    left: 450px;
+    top:590px;
+    width: 450px;
+    height: 100px;
+    background-color: black;
+    background: radial-gradient(rgba(1,1,1,0) 5%, rgba(1,1,1,0.7) 20%, rgba(1,1,1,1) 45%);
+}

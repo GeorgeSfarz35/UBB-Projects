@@ -1,0 +1,14 @@
+
+.div1 {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition-property: height;
+    transition-duration: 8s;
+    transition-timing-function: linear;
+    background-image: linear-gradient(to right, blue, rgb(131, 131, 190));
+    height: 0px;
+    width: 1495px;
+    border-bottom: 15px solid blue;
+}
+.div1:hover {height: 707px;}

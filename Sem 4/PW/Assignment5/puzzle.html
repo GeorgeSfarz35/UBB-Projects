@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <style type="text/css">
+            td {
+	            margin:0;
+	            border:0;
+	            padding:0;
+            }
+            table {
+	            border-collapse:separate;
+	            border-spacing:1px;
+            }
+            div {
+                top:50%;
+                left:70%;
+                position:absolute;
+                font-size: 40px;
+            }
+        </style>
+        <script type="text/javascript">
+        
+            pics = new Array(9);
+            function loadPuzzle() {
+                for(i=1; i<10; i++) {
+                    found = true;
+                    while(found == true) {
+                        x = 1 + Math.floor(Math.random() * 1000) % 9;
+                        found = false;
+                        for(j =1; j<i; j++)
+                            if(pics[j] == x) found = true;
+                    }
+                    pics[i] = x;
+                }
+                var cell;
+                for(i=1; i<10; i++) {
+                    cell = document.getElementById(i);
+                    if(cell) {
+                        img = document.createElement("img");
+                        img.setAttribute("src", "p"+pics[i]+".png");
+                        cell.appendChild(img);
+                    }
+                }
+            }
+
+            var selectedCells = 0;
+            var first;
+            var second;
+            function move(cellId) {
+                if(selectedCells == 0) {
+                    first = document.getElementById(cellId);
+                    selectedCells = 1;
+                    return;
+                }
+                if(cellId != first.id){
+                    second = document.getElementById(cellId);
+                    img1 = first.firstChild;
+                    img2 = second.firstChild;
+
+                    first.removeChild(first.firstChild);
+                    second.removeChild(second.firstChild);
+                    first.appendChild(img2);
+                    second.appendChild(img1);
+                    aux = pics[first.id];
+                    pics[first.id] = pics[second.id]
+                    pics[second.id] = aux;
+                    selectedCells = 0;
+                    verify();
+                }
+            }
+
+            function verify() {
+                var complete = true;
+                for(i=1; i<9; i++)
+                    if(pics[i] != i) complete = false;
+                if(complete == true){
+                    document.getElementById("finaltext").innerHTML = "Well done!";
+                    document.getElementById("table").setAttribute("style", "border-collapse:collapse");
+                    for(i=1; i<10; i++)
+                        document.getElementById(i).onclick = '';
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="loadPuzzle()">
+        <table id="table">
+            <tr>
+                <td id="1" onclick="move(1);"></td>
+                <td id="2" onclick="move(2);"></td>
+                <td id="3" onclick="move(3);"></td>
+            </tr>
+            <tr>
+                <td id="4" onclick="move(4);"></td>
+                <td id="5" onclick="move(5);"></td>
+                <td id="6" onclick="move(6);"></td>
+            </tr>
+            <tr>
+                <td id="7" onclick="move(7);"></td>
+                <td id="8" onclick="move(8);"></td>
+                <td id="9" onclick="move(9);"></td>
+            </tr>
+        </table>
+        <div id="finaltext"></div>
+    </body>
+</html>
